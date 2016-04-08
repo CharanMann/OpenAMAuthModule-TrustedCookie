@@ -31,7 +31,7 @@ Testing:
 ========
 1. Navigate to SampleVendor WAM login page and perform authentication. After successful authentication, SampleVendor WAM sets the trusted WAM's SSO cookie. 
 2. Navigate to resource protected by OpenAM. OpenAM performs authentication using trusted cookie authentication module. In actual deployment OpenAM custom authentication module should invoke SampleVendor WAM's
-API for cookie validation. OpenAM should allow access to protected resource (if OpenAM authorization policy evaluation succeeds). 
+API for cookie validation and userID retrieval. OpenAM should allow access to protected resource (if OpenAM authorization policy evaluation succeeds). 
  
 Curl command(s):
 - curl -X POST -H "Content-Type: application/json" --cookie "X-Special-Trusted-User=demo" "http://openam13.sample.com:8080/openam/json/authenticate" -v

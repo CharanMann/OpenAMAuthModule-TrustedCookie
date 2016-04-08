@@ -104,7 +104,7 @@ public class TrustedCookie extends AMLoginModule {
 
             if (cookieName.equalsIgnoreCase(trustedCookieName)) {
 
-                // In actual deployment OpenAM custom authentication module should invoke SampleVendor WAM's API for cookie validation
+                // In actual deployment OpenAM custom authentication module should invoke SampleVendor WAM's API for cookie validation and userID retrieval
                 userId = cookie.getValue();
                 debug.message("Trusted cookie found for user: " + userId);
             }
