@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+  The contents of this file are subject to the terms of the Common Development and
+  Distribution License (the License). You may not use this file except in compliance with the
+  License.
+
+  You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+  specific language governing permission and limitations under the License.
+
+  When distributing Covered Software, include this CDDL Header Notice in each file and include
+  the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+  Header, with the fields enclosed by brackets [] replaced by your own identifying
+  information: "Portions copyright [year] [name of copyright owner]".
+
+  Copyright 2016 Charan Mann
+  Portions Copyrighted 2016 ForgeRock AS
+
+  OpenAMAuthModule-TrustedCookie: Created by Charan Mann on 4/6/16 , 1:31 PM.
+-->
+<!DOCTYPE ServicesConfiguration
+        PUBLIC "=//iPlanet//Service Management Services (SMS) 1.0 DTD//EN"
+        "jar://com/sun/identity/sm/sms.dtd">
+
+<ServicesConfiguration>
+    <Service name="iPlanetAMAuthTrustedCookieService" version="1.0">
+        <Schema
+                serviceHierarchy="/DSAMEConfig/authentication/iPlanetAMAuthTrustedCookieService"
+                i18nFileName="amAuthTrustedCookie" revisionNumber="10"
+                i18nKey="trustedcookie-service-description" resourceName="trustedcookie">
+            <Organization>
+                <!-- Authentication level -->
+                <AttributeSchema name="iplanet-am-auth-trustedcookie-auth-level" resourceName="authLevel"
+                                 type="single" syntax="number_range" rangeStart="0" rangeEnd="2147483647"
+                                 i18nKey="a500">
+                    <DefaultValues>
+                        <Value>1</Value>
+                    </DefaultValues>
+                </AttributeSchema>
+
+                <!-- Trusted cookie name -->
+                <AttributeSchema name="trustedCookie"
+                                 type="single" syntax="string" validator="no" i18nKey="a501">
+                    <DefaultValues>
+                        <Value>X-Special-Trusted-User</Value>
+                    </DefaultValues>
+                </AttributeSchema>
+
+                <!--
+                 For Auth Modules, the parent Schema element specifies the REST SMS resourceName,
+                 and the nested SubSchema must have resourceName="USE-PARENT"
+                -->
+                <SubSchema name="serverconfig" inheritance="multiple" resourceName="USE-PARENT">
+                    <!-- Authentication level -->
+                    <AttributeSchema name="iplanet-am-auth-trustedcookie-auth-level" resourceName="authLevel"
+                                     type="single" syntax="number_range" rangeStart="0" rangeEnd="2147483647"
+                                     i18nKey="a500">
+                        <DefaultValues>
+                            <Value>1</Value>
+                        </DefaultValues>
+                    </AttributeSchema>
+
+                    <!-- Trusted cookie name -->
+                    <AttributeSchema name="trustedCookie"
+                                     type="single" syntax="string" validator="no" i18nKey="a501">
+                        <DefaultValues>
+                            <Value>X-Special-Trusted-User</Value>
+                        </DefaultValues>
+                    </AttributeSchema>
+
+                </SubSchema>
+            </Organization>
+        </Schema>
+    </Service>
+</ServicesConfiguration>
